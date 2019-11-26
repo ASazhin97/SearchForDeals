@@ -17,12 +17,16 @@ public class InputPanel extends JPanel{
 	private BoxLayout _layout;
 	private JLabel _keyLabel;
 	private JButton _setValuesButton;
+	private JButton _startSearchButton;
+	private JButton _endSearchButton;
 	
 	public InputPanel(Handler handler) {
 		_handler = handler;
 		_keyInput = new JTextField(30);
 		_intervalInput = new JTextField(30);
 		_setValuesButton = new JButton("Set Settings");
+		_startSearchButton = new JButton("Start Searching");
+		_endSearchButton = new JButton("End Seach");
 		
 		Dimension size = new Dimension(500, 30);
 		_keyInput.setMaximumSize(size);
@@ -39,6 +43,8 @@ public class InputPanel extends JPanel{
 		this.add(_intervalLabel);
 		this.add(_intervalInput);
 		this.add(_setValuesButton);
+		this.add(_startSearchButton);
+		this.add(_endSearchButton);
 		
 		_setValuesButton.addActionListener(new ActionListener() {
 
@@ -47,6 +53,26 @@ public class InputPanel extends JPanel{
 				// TODO Auto-generated method stub
 				_handler.setKeyWords(_keyInput.getText());
 				_handler.setMinInterval(Integer.parseInt(_intervalInput.getText()));
+			}
+			
+		});
+		
+		_startSearchButton.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				_handler.startSearch();
+			}
+			
+		});
+		
+		_endSearchButton.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				_handler.endSearch();
+				
 			}
 			
 		});

@@ -1,8 +1,11 @@
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.BoxLayout;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.Timer;
 
 public class OutputPanel extends JPanel{
 	private Handler _handler;
@@ -14,6 +17,11 @@ public class OutputPanel extends JPanel{
 	
 	private String _keyWords;
 	private int _timeInt;
+	
+	private ActionListener _searcher;
+	private Timer _timer;
+	
+	private WebPageParser parser;
 	
 	public OutputPanel(Handler handler) {
 		_handler = handler;
@@ -36,6 +44,14 @@ public class OutputPanel extends JPanel{
 		this.setLayout(_mainLayout);
 		this.add(_topPanel);
 		
+		//create action listener for timer;
+		_searcher = new ActionListener() {
+		      public void actionPerformed(ActionEvent evt) {
+		          searchDeals();
+		      }
+		  };
+		  
+		  
 	}
 	
 	public void setKeyWords(String newWords) {
@@ -47,4 +63,20 @@ public class OutputPanel extends JPanel{
 		_timeInt = newInterval;
 		_intervalLabel.setText("  Interval: " + Integer.toString(_timeInt));
 	}
+	
+	public void startSearch() {
+		_timer = new Timer(_timeInt * 60000, _searcher);
+		System.out.println(_timeInt);
+		_timer.start();
+	}
+	
+	public void endSearch() {
+		_timer.stop();
+	}
+	
+	private void searchDeals() {
+		System.out.println("I'm searching for deals");
+	}
+	
+	
 }
