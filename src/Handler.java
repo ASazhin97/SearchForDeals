@@ -30,4 +30,12 @@ public class Handler {
 	public void setOutputPanel(OutputPanel panel) {
 		_panel = panel;
 	}
+	
+	public void startSearch() {
+		_panel.startSearch();
+	}
+	
+	public void endSearch() {
+		_panel.endSearch();
+	}
 }
