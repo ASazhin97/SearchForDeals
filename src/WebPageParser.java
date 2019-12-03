@@ -15,22 +15,32 @@ public class WebPageParser {
 
 	public WebPageParser(Handler handler) {
 		try {
-			doc = Jsoup.connect("https://dealsea.com/search?q=" + handler.getKeyWords() + "&search_mode=Deals").get();
+			
 			System.out.println("SEARCHING FOR DEALS...");
 			System.out.println("KEYWORD: " + handler.getKeyWords() + " ");
 			_deals = new ArrayList<Deal>();
-
-			Elements links = doc.select("a[href]");
-			for (Element link : links) {
-				if (link.text().toLowerCase().contains(handler.getKeyWords())) {
-					Deal newDeal = new Deal(link.text(), link.absUrl("href"));
-					_deals.add(newDeal);
-//					
-//					System.out.println("Discounted Item: " + link.text());
-//					System.out.println("Link: " + link.absUrl("href"));
-//					URLdeal.add(link.absUrl("href"));
+			
+			String[] wordsArray = handler.getKeyWords().split(", ");
+			
+			
+			for(int i = 0; i < wordsArray.length; i++) {
+				System.out.println(wordsArray[i]);
+				doc = Jsoup.connect("https://dealsea.com/search?q=" + wordsArray[i] + "&search_mode=Deals").get();
+				Elements links = doc.select("a[href]");
+				
+				for (Element link : links) {
+					
+					if (link.text().toLowerCase().contains(wordsArray[i])) {
+						Deal newDeal = new Deal(link.text(), link.absUrl("href"));
+						_deals.add(newDeal);
+//						
+//						System.out.println("Discounted Item: " + link.text());
+//						System.out.println("Link: " + link.absUrl("href"));
+//						URLdeal.add(link.absUrl("href"));
+					}
 				}
 			}
+			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
