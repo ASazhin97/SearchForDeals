@@ -83,16 +83,16 @@ public class OutputPanel extends JPanel{
 		Deal[] dealArray = new Deal[s];
 		
 		if(!deals.isEmpty()) {
-			new PopUp();
+			
 			
 			for(int k = 0; k < deals.size(); k++) {
 				System.out.println(deals.get(k).getName());
 				
 				dealArray[k] = deals.get(k);
 			}
+			
+			new PopUp(dealArray);
 		}
-		
-		
 	}
 	
 	
