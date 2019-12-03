@@ -10,7 +10,7 @@ public class PopUp extends Popup{
 	Popup pop;
 	
 	public PopUp(Deal[] dealArray, String keyWord) {
-		PopupFactory poper = new PopupFactory();
+		PopupFactory popper = new PopupFactory();
 		
 		//basic panel
 		JFrame frame = new JFrame("Found deals on " + keyWord + " on www.dealsea.com");
@@ -20,7 +20,7 @@ public class PopUp extends Popup{
 		JPanel panel = new JPanel();
 		
 		panel.add(label);
-		pop = poper.getPopup(frame, panel, 100, 100);
+		pop = popper.getPopup(frame, panel, 100, 100);
 		
 		frame.add(panel);
 		

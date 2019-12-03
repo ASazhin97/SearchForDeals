@@ -21,22 +21,18 @@ public class WebPageParser {
 			_deals = new ArrayList<Deal>();
 			
 			String[] wordsArray = handler.getKeyWords().split(", ");
-			
-			
-			for(int i = 0; i < wordsArray.length; i++) {
-				System.out.println(wordsArray[i]);
-				doc = Jsoup.connect("https://dealsea.com/search?q=" + wordsArray[i] + "&search_mode=Deals").get();
+
+
+			for (String s : wordsArray) {
+				System.out.println(s);
+				doc = Jsoup.connect("https://dealsea.com/search?q=" + s + "&search_mode=Deals").get();
 				Elements links = doc.select("a[href]");
-				
+
 				for (Element link : links) {
-					
-					if (link.text().toLowerCase().contains(wordsArray[i])) {
+
+					if (link.text().toLowerCase().contains(s)) {
 						Deal newDeal = new Deal(link.text(), link.absUrl("href"));
 						_deals.add(newDeal);
-//						
-//						System.out.println("Discounted Item: " + link.text());
-//						System.out.println("Link: " + link.absUrl("href"));
-//						URLdeal.add(link.absUrl("href"));
 					}
 				}
 			}
