@@ -1,6 +1,7 @@
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 public class OutputPanel extends JPanel{
 	private Handler _handler;
@@ -17,6 +18,9 @@ public class OutputPanel extends JPanel{
 	private Timer _timer;
 	
 	private WebPageParser parser;
+	
+	private ArrayList<JLabel> DealLabels; 
+	private JFrame _listFrame;
 	
 	public OutputPanel(Handler handler) {
 		_handler = handler;
@@ -35,6 +39,8 @@ public class OutputPanel extends JPanel{
 		
 		_topPanel.add(_keyWordsLabel);
 		_topPanel.add(_intervalLabel);
+		
+		_listFrame = new JFrame();
 		
 		this.setLayout(_mainLayout);
 		this.add(_topPanel);
@@ -70,7 +76,23 @@ public class OutputPanel extends JPanel{
 	}
 	
 	private void searchDeals() {
-		System.out.println("I'm searching for deals");
+		WebPageParser parser = new WebPageParser(_handler);
+		ArrayList<Deal> deals = parser.getNewDeals();
+		
+		int s = deals.size();
+		Deal[] dealArray = new Deal[s];
+		
+		if(!deals.isEmpty()) {
+			new PopUp();
+			
+			for(int k = 0; k < deals.size(); k++) {
+				System.out.println(deals.get(k).getName());
+				
+				dealArray[k] = deals.get(k);
+			}
+		}
+		
+		
 	}
 	
 	
