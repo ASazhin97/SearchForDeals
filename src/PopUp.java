@@ -9,11 +9,11 @@ import javax.swing.PopupFactory;
 public class PopUp extends Popup{
 	Popup pop;
 	
-	public PopUp(Deal[] dealArray) {
+	public PopUp(Deal[] dealArray, String keyWord) {
 		PopupFactory poper = new PopupFactory();
 		
 		//basic panel
-		JFrame frame = new JFrame("You have new deals available!");
+		JFrame frame = new JFrame("Deals found on: " + keyWord);
 		JLabel label = new JLabel("Deals Available!");
 		
 		frame.setSize(1500, 600);
