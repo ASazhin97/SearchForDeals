@@ -26,8 +26,8 @@ public class InputPanel extends JPanel{
 		_keyInput = new JTextField(30);
 		_intervalInput = new JTextField(30);
 		_setValuesButton = new JButton("Set Settings");
-		_startSearchButton = new JButton("Start Searching");
-		_endSearchButton = new JButton("End Seach");
+		_startSearchButton = new JButton("Run Bot");
+		_endSearchButton = new JButton("Terminate Bot");
 		
 		Dimension size = new Dimension(500, 30);
 		_keyInput.setMaximumSize(size);
@@ -35,7 +35,7 @@ public class InputPanel extends JPanel{
 		
 		_layout = new BoxLayout(this, BoxLayout.Y_AXIS);
 		_keyLabel = new JLabel("Key Words");
-		_intervalLabel = new JLabel("Checking Interval");
+		_intervalLabel = new JLabel("Bot Search Interval (in minutes)");
 		_ethicalLabel = new JLabel("WARNING: Setting interval below 5 is unadvised.");
 		
 		

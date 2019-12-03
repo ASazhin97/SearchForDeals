@@ -73,6 +73,7 @@ public class OutputPanel extends JPanel{
 	
 	public void endSearch() {
 		_timer.stop();
+		System.exit(0);
 	}
 	
 	private void searchDeals() {
