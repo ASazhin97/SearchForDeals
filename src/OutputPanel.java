@@ -91,7 +91,7 @@ public class OutputPanel extends JPanel{
 				dealArray[k] = deals.get(k);
 			}
 			
-			new PopUp(dealArray);
+			new PopUp(dealArray, _keyWords);
 		}
 	}
 	
