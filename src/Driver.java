@@ -6,7 +6,7 @@ public class Driver extends JFrame{
 	
 	public Driver() {
 		super("Deal Finder");
-		this.setSize(600,300);
+		this.setSize(800,300);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		_mainPanel = new MainPanel();
 		this.add(_mainPanel);

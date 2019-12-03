@@ -13,7 +13,7 @@ public class PopUp extends Popup{
 		PopupFactory poper = new PopupFactory();
 		
 		//basic panel
-		JFrame frame = new JFrame("Deals found on: " + keyWord);
+		JFrame frame = new JFrame("Found deals on " + keyWord + " on www.dealsea.com");
 		JLabel label = new JLabel("Deals Available!");
 		
 		frame.setSize(1500, 600);

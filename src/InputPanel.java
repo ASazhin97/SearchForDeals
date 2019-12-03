@@ -19,6 +19,7 @@ public class InputPanel extends JPanel{
 	private JButton _setValuesButton;
 	private JButton _startSearchButton;
 	private JButton _endSearchButton;
+	private JLabel _ethicalLabel;
 	
 	public InputPanel(Handler handler) {
 		_handler = handler;
@@ -35,6 +36,7 @@ public class InputPanel extends JPanel{
 		_layout = new BoxLayout(this, BoxLayout.Y_AXIS);
 		_keyLabel = new JLabel("Key Words");
 		_intervalLabel = new JLabel("Checking Interval");
+		_ethicalLabel = new JLabel("WARNING: Setting interval below 5 is unadvised.");
 		
 		
 		this.setLayout(_layout);
@@ -45,6 +47,7 @@ public class InputPanel extends JPanel{
 		this.add(_setValuesButton);
 		this.add(_startSearchButton);
 		this.add(_endSearchButton);
+		this.add(_ethicalLabel);
 		
 		_setValuesButton.addActionListener(new ActionListener() {
 
