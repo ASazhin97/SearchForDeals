@@ -4,6 +4,7 @@ public class Handler {
 	private int _minInterval;
 	private OutputPanel _panel;
 	
+	
 	public Handler() {
 		_keyWords = "";
 		_minInterval = 10;
