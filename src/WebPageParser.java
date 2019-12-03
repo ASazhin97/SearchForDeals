@@ -10,19 +10,18 @@ import java.util.List;
 public class WebPageParser {
 	Document doc;
 	List<String> URLdeal = new ArrayList<>();
+	public static Handler handler;
 
-	public WebPageParser(String page) {
+	public WebPageParser(Handler handler) {
 		try {
-			// format of URL is: https://dealsea.com/search?q=" + keyword + "&search_mode=Deals
-			doc = Jsoup.connect("https://dealsea.com/search?q=router&search_mode=Deals").get();
+			doc = Jsoup.connect("https://dealsea.com/search?q=" + handler.getKeyWords() + "&search_mode=Deals").get();
 			System.out.println("SEARCHING FOR DEALS...");
-			String keyword = doc.title();
-			String[] text = keyword.split(" ");
-			System.out.println("KEYWORD: " + text[1]);
+			System.out.println("KEYWORD: " + handler.getKeyWords() + " ");
+
 
 			Elements links = doc.select("a[href]");
 			for (Element link : links) {
-				if (link.text().toLowerCase().contains("router")) {
+				if (link.text().toLowerCase().contains(handler.getKeyWords())) {
 					System.out.println("Discounted Item: " + link.text());
 					System.out.println("Link: " + link.absUrl("href"));
 					URLdeal.add(link.absUrl("href"));
