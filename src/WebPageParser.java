@@ -27,10 +27,11 @@ public class WebPageParser {
 				System.out.println(s);
 				doc = Jsoup.connect("https://dealsea.com/search?q=" + s + "&search_mode=Deals").get();
 				Elements links = doc.select("a[href]");
+				Elements expired = doc.select("span[class]");
 
 				for (Element link : links) {
 
-					if (link.text().toLowerCase().contains(s)) {
+					if (link.text().toLowerCase().contains(s) | !expired.text().contains("Expired")) {
 						Deal newDeal = new Deal(link.text(), link.absUrl("href"));
 						_deals.add(newDeal);
 					}
